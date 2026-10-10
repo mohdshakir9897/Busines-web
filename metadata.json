@@ -1,0 +1,6 @@
+{
+  "name": "Synthex Global - Enterprise Intelligent Cloud Platform",
+  "description": "Enterprise-grade intelligent cloud infrastructure and autonomous data platform for global leaders. Built for scale, security, and velocity.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
