@@ -17,7 +17,7 @@ export const HowItWorks: React.FC = () => {
             From Zero-State to Live Autonomous Production in Under 45 Days
           </h2>
           <p className="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed">
-            Deterministic deployment without rewrites. Synthex embeds seamlessly into your existing clusters, Kubernetes namespaces, and cloud virtual networks.
+            Deterministic deployment without rewrites. Hexbyte embeds seamlessly into your existing clusters, Kubernetes namespaces, and cloud virtual networks.
           </p>
         </div>
 

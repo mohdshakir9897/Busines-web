@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, FileText, CheckCircle2 } from 'lucide-react';
+import { Link } from 'wouter';
 import confetti from 'canvas-confetti';
 
 interface ExitIntentModalProps {
@@ -12,7 +13,7 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onOpenDemo }) 
   const [downloadSent, setDownloadSent] = useState(false);
 
   useEffect(() => {
-    const hasTriggered = sessionStorage.getItem('synthex_exit_intent_fired');
+    const hasTriggered = sessionStorage.getItem('hexbyte_exit_intent_fired');
     if (hasTriggered) return;
 
     let dwellTimeSatisfied = false;
@@ -23,7 +24,7 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onOpenDemo }) 
     const handleMouseLeave = (e: MouseEvent) => {
       if (dwellTimeSatisfied && e.clientY <= 15) {
         setIsOpen(true);
-        sessionStorage.setItem('synthex_exit_intent_fired', 'true');
+        sessionStorage.setItem('hexbyte_exit_intent_fired', 'true');
       }
     };
 
@@ -104,15 +105,16 @@ export const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onOpenDemo }) 
 
         <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
           <span>Prefer a live interactive consultation?</span>
-          <button
+          <Link
+            href="/request-consultation"
             onClick={() => {
               setIsOpen(false);
-              onOpenDemo();
+              window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             }}
             className="text-sky-400 hover:text-sky-300 font-semibold underline underline-offset-2"
           >
-            Schedule a Demo
-          </button>
+            Talk to an Expert
+          </Link>
         </div>
       </div>
     </div>

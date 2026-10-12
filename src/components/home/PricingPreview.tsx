@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Check, ArrowRight, HelpCircle } from 'lucide-react';
+import { Link } from 'wouter';
 import { PRICING_PLANS } from '../../data/homeContent';
 
 interface PricingPreviewProps {
-  onOpenDemo: () => void;
+  onOpenDemo?: () => void;
 }
 
 export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) => {
@@ -132,17 +133,17 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
                 </div>
 
                 <div className="mt-8 pt-4">
-                  <button
-                    onClick={onOpenDemo}
-                    className={`w-full py-3 px-4 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 ${
+                  <Link
+                    href="/request-consultation"
+                    className={`w-full py-3 px-4 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                       plan.popular
                         ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30'
                         : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
                     }`}
                   >
-                    <span>{plan.ctaText}</span>
+                    <span>Request a Consultation</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );
@@ -153,12 +154,12 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
         <div className="mt-12 text-center text-xs text-slate-400 flex items-center justify-center gap-2">
           <HelpCircle className="w-4 h-4 text-indigo-400" />
           <span>Require custom enterprise MSA terms, HIPAA BAA signing, or sovereign defense airgap licensing?</span>
-          <button
-            onClick={onOpenDemo}
-            className="text-sky-400 hover:text-sky-300 font-semibold underline underline-offset-2 ml-1"
+          <Link
+            href="/request-consultation"
+            className="text-sky-400 hover:text-sky-300 font-semibold underline underline-offset-2 ml-1 cursor-pointer"
           >
             Contact Global Procurement Desk
-          </button>
+          </Link>
         </div>
       </div>
     </section>

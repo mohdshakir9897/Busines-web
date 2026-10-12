@@ -34,7 +34,7 @@ export interface IndustryItem {
   tagline: string;
   description: string;
   keyChallenge: string;
-  synthexSolution: string;
+  hexbyteSolution: string;
   metric: string;
   metricLabel: string;
   complianceTags: string[];

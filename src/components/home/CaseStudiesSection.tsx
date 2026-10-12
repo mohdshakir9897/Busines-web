@@ -28,7 +28,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenDe
               Verified Production Transformations
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight text-balance">
-              How Global Industry Leaders Deploy Synthex at Hyperscale
+              How Global Industry Leaders Deploy Hexbyte at Hyperscale
             </h2>
           </div>
 
@@ -71,7 +71,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenDe
                   <p>{currentCase.challenge}</p>
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">Synthex Solution</span>
+                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">Hexbyte Solution</span>
                   <p>{currentCase.solution}</p>
                 </div>
               </div>

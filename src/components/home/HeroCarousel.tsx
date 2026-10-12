@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play, Shield, Terminal } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Shield, Terminal } from 'lucide-react';
+import { Link } from 'wouter';
 import { HERO_SLIDES } from '../../data/homeContent';
-import { HeroThreeScene } from '../3d/HeroThreeScene';
+import { HeroVideoDisplay } from './HeroVideoDisplay';
 
 interface HeroCarouselProps {
-  onOpenDemo: () => void;
+  onOpenDemo?: () => void;
   onOpenWhitepaper: () => void;
 }
 
@@ -66,32 +67,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
       />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* Top Kicker Bar with Clean Unboxed Metadata */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-slate-800/80 text-xs text-slate-400">
-          <div className="flex items-center gap-3">
-            <span className="font-semibold text-white tracking-wide uppercase text-[11px]">
-              {currentSlide.badge}
-            </span>
-            <span aria-hidden="true" className="text-slate-600">/</span>
-            <span className="hidden sm:inline text-slate-300">
-              Distributed Systems Benchmark 2026
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3 font-mono">
-            <span>Slide 0{currentSlideIndex + 1} of 0{HERO_SLIDES.length}</span>
-            <span aria-hidden="true" className="text-slate-600">/</span>
-            <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-              aria-label={isPaused ? "Resume carousel autoplay" : "Pause carousel autoplay"}
-            >
-              {isPaused ? <Play className="w-3 h-3 text-sky-400" /> : <Pause className="w-3 h-3 text-slate-400" />}
-              <span className="text-[11px]">{isPaused ? 'Paused' : 'Autoplay'}</span>
-            </button>
-          </div>
-        </div>
-
         {/* 2-Column Split Hero Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center min-h-[520px]">
           {/* Column 1: Animated Headline, Value Prop & Action CTAs */}
@@ -136,13 +111,16 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
 
                 {/* Primary & Secondary Action CTAs */}
                 <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <button
-                    onClick={onOpenDemo}
-                    className="px-6 py-3 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg shadow-indigo-600/25 transition-all flex items-center gap-2 group whitespace-nowrap"
+                  <Link
+                    href="/request-consultation"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                    }}
+                    className="px-6 py-3 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg shadow-indigo-600/25 transition-all flex items-center gap-2 group whitespace-nowrap cursor-pointer"
                   >
                     <span>{currentSlide.primaryCtaText}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
 
                   <button
                     onClick={() => {
@@ -162,40 +140,22 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
             </AnimatePresence>
           </div>
 
-          {/* Column 2: Dual Focal Visual: 3D Interactive WebGL Cluster + Cinematic Backdrop */}
+          {/* Column 2: Animated Video & High-Tech Telemetry Stream */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl overflow-hidden border border-slate-800/90 bg-slate-900 shadow-2xl group">
-              {/* Cinematic Background Backdrop Image with Measured Contrast Scrim */}
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] w-full overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentSlide.imageUrl}
-                    src={currentSlide.imageUrl}
-                    alt={currentSlide.title}
-                    referrerPolicy="no-referrer"
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 0.55, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
-                  />
-                </AnimatePresence>
-                
-                {/* Contrast Scrim */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
-                <div className="absolute inset-0 bg-radial from-transparent to-slate-950/80" />
-
-                {/* 3D Interactive WebGL Scene Overlay */}
-                <div className="absolute inset-0 z-10 flex items-center justify-center p-2">
-                  <HeroThreeScene accentColor={currentSlide.accentColor} />
-                </div>
+                <HeroVideoDisplay
+                  posterImage={currentSlide.imageUrl}
+                  accentColor={currentSlide.accentColor}
+                  slideId={currentSlide.id}
+                />
               </div>
 
               {/* Lower HUD status strip */}
               <div className="relative z-20 px-5 py-3.5 bg-slate-950/90 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-300">
                 <div className="flex items-center gap-2">
                   <Terminal className="w-3.5 h-3.5 text-sky-400" />
-                  <span className="font-mono text-[11px] text-slate-300">SYNTHEX-NODE-MESH-ACTIVE</span>
+                  <span className="font-mono text-[11px] text-slate-300">HEXBYTE-EVENT-STREAM-ACTIVE</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-400">
                   <Shield className="w-3.5 h-3.5 text-emerald-400" />

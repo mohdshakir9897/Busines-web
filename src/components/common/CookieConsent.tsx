@@ -5,7 +5,7 @@ export const CookieConsent: React.FC = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('synthex_cookie_consent');
+    const consent = localStorage.getItem('hexbyte_cookie_consent');
     if (!consent) {
       // Show after gentle 2.5s delay
       const timer = setTimeout(() => setVisible(true), 2500);
@@ -14,7 +14,7 @@ export const CookieConsent: React.FC = () => {
   }, []);
 
   const handleAccept = (type: 'all' | 'essential') => {
-    localStorage.setItem('synthex_cookie_consent', type);
+    localStorage.setItem('hexbyte_cookie_consent', type);
     setVisible(false);
   };
 

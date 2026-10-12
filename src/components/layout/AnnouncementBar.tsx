@@ -17,7 +17,7 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onOpenWhitepap
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <div className="flex-1 flex items-center justify-center gap-2 text-center flex-wrap">
-          <span className="text-indigo-400 font-semibold tracking-wide">Synthex Autumn '26 Platform Release</span>
+          <span className="text-indigo-400 font-semibold tracking-wide">Hexbyte Autumn '26 Platform Release</span>
           <span className="text-slate-500 hidden sm:inline" aria-hidden="true">/</span>
           <span className="text-slate-300">Deterministic eBPF mesh and automated sovereign compliance now available globally.</span>
           <button

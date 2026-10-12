@@ -14,9 +14,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     badge: 'Enterprise Infrastructure',
     title: 'Autonomous Cloud Orchestration for Hyperscale Workloads',
     subtitle: 'Zero downtime. Sub-millisecond latency. Global multi-region sync.',
-    description: 'Synthex coordinates hybrid and multi-cloud operations across 42 global regions with deterministic latency, self-healing runtime failover, and hardware-accelerated telemetry.',
-    primaryCtaText: 'Schedule Technical Demo',
-    primaryCtaAction: 'demo',
+    description: 'Hexbyte coordinates hybrid and multi-cloud operations across 42 global regions with deterministic latency, self-healing runtime failover, and hardware-accelerated telemetry.',
+    primaryCtaText: 'Talk to an Expert',
+    primaryCtaAction: 'consultation',
     secondaryCtaText: 'Explore Architecture',
     secondaryCtaAction: 'architecture',
     imageUrl: '/src/assets/images/hero_enterprise_datacenter_1791612780894.jpg',
@@ -30,8 +30,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     title: 'Unified Command & Autonomous Incident Remediation',
     subtitle: 'Resolve system degradation before customers experience impact.',
     description: 'Transform enterprise NOC and SRE teams with telemetry distillation, causal root-cause analysis, and automated safe runbook execution verified by formal invariant guarantees.',
-    primaryCtaText: 'Book Platform Walkthrough',
-    primaryCtaAction: 'demo',
+    primaryCtaText: 'Request a Consultation',
+    primaryCtaAction: 'consultation',
     secondaryCtaText: 'View Case Studies',
     secondaryCtaAction: 'cases',
     imageUrl: '/src/assets/images/hero_autonomous_operations_1791612800790.jpg',
@@ -45,10 +45,10 @@ export const HERO_SLIDES: HeroSlide[] = [
     title: 'Deterministic Computing for High-Frequency Capital Markets',
     subtitle: 'Bank-grade compliance, microsecond order routing, and real-time risk.',
     description: 'Engineered for Tier-1 investment banks, hedge funds, and market makers requiring zero jitter, end-to-end cryptographic auditability, and SOC2 / ISO 27001 / FedRAMP compliance.',
-    primaryCtaText: 'Request Security Dossier',
-    primaryCtaAction: 'security',
+    primaryCtaText: 'Talk to an Expert',
+    primaryCtaAction: 'consultation',
     secondaryCtaText: 'Contact Capital Markets Team',
-    secondaryCtaAction: 'demo',
+    secondaryCtaAction: 'consultation',
     imageUrl: '/src/assets/images/hero_fintech_security_1791612816960.jpg',
     statLabel: 'Annual Volume Cleared',
     statValue: '$42B+',
@@ -60,8 +60,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     title: 'Synchronized Physical & Digital Supply Chain Mesh',
     subtitle: 'Predictive routing and real-time inventory telemetry at global scale.',
     description: 'Bridge physical warehouse robotics, automated conveyor routing, and global container tracking into a single unified event mesh with sub-second end-to-end synchronization.',
-    primaryCtaText: 'Explore Industrial Mesh',
-    primaryCtaAction: 'demo',
+    primaryCtaText: 'Request a Consultation',
+    primaryCtaAction: 'consultation',
     secondaryCtaText: 'Download Supply Report',
     secondaryCtaAction: 'resources',
     imageUrl: '/src/assets/images/hero_global_logistics_1791612830723.jpg',
@@ -164,7 +164,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     title: 'Intelligent Agent SRE & Ops Copilot',
     category: 'Operations',
     summary: 'Autonomous root-cause synthesis and pre-authorized runbook execution.',
-    description: 'When anomalies emerge, Synthex correlates millions of metrics, traces, and logs in seconds, producing an executive incident brief and executing verified corrective runbooks.',
+    description: 'When anomalies emerge, Hexbyte correlates millions of metrics, traces, and logs in seconds, producing an executive incident brief and executing verified corrective runbooks.',
     impactMetric: '-74%',
     impactLabel: 'Reduction in High-Severity MTTR',
     features: [
@@ -216,21 +216,21 @@ export const WORKFLOW_STEPS = [
     step: '01',
     title: 'Autonomous Ingestion & System Discovery',
     subtitle: 'Zero-friction telemetry deployment across your architecture in under 30 minutes.',
-    description: 'Synthex eBPF probes automatically discover all services, dependencies, and data pipelines without requiring code modifications or downtime.',
+    description: 'Hexbyte eBPF probes automatically discover all services, dependencies, and data pipelines without requiring code modifications or downtime.',
     deliverable: 'Real-time interactive service dependency topology graph'
   },
   {
     step: '02',
     title: 'Policy-as-Code & Invariant Definition',
     subtitle: 'Establish enforceable SLAs, sovereign data boundaries, and cost caps.',
-    description: 'Codify governance rules in declarative YAML or TypeScript. Synthex continuously checks for regressions, unauthorized drift, and compliance violations.',
+    description: 'Codify governance rules in declarative YAML or TypeScript. Hexbyte continuously checks for regressions, unauthorized drift, and compliance violations.',
     deliverable: 'Auditable compliance matrix and automated enforcement webhooks'
   },
   {
     step: '03',
     title: 'Live Orchestration & Multi-Cloud Mesh',
     subtitle: 'Autonomous traffic routing and dynamic compute allocation in production.',
-    description: 'Synthex activates intelligent routing, distributing ingress requests based on real-time latency measurements, cloud provider spot prices, and cluster health.',
+    description: 'Hexbyte activates intelligent routing, distributing ingress requests based on real-time latency measurements, cloud provider spot prices, and cluster health.',
     deliverable: 'Global control plane dashboard with sub-second failover'
   },
   {
@@ -249,7 +249,7 @@ export const INDUSTRIES_LIST: IndustryItem[] = [
     tagline: 'Deterministic execution and sovereign data residency for Tier-1 institutions.',
     description: 'Modernize legacy core systems while adhering to strict FedRAMP, Dodd-Frank, and MiFID II requirements. Scale clearing operations without latency penalties.',
     keyChallenge: 'Reconciling multi-region high-frequency transactions with strict data residency mandates.',
-    synthexSolution: 'Cryptographically proven distributed ledgering and deterministic multi-cloud routing.',
+    hexbyteSolution: 'Cryptographically proven distributed ledgering and deterministic multi-cloud routing.',
     metric: '$42B+',
     metricLabel: 'Cleared Volume with Zero Data Loss',
     complianceTags: ['SOC2 Type II', 'ISO 27001', 'PCI-DSS v4.0', 'MiFID II']
@@ -260,7 +260,7 @@ export const INDUSTRIES_LIST: IndustryItem[] = [
     tagline: 'HIPAA-compliant genomic sequencing pipelines and hospital network telemetry.',
     description: 'Accelerate medical imaging research and patient data analytics while guaranteeing complete end-to-end encryption and patient record anonymization.',
     keyChallenge: 'Processing massive multi-terabyte DICOM and genomic datasets securely across research hospitals.',
-    synthexSolution: 'Edge-native data sanitization with zero-knowledge cryptographic verification.',
+    hexbyteSolution: 'Edge-native data sanitization with zero-knowledge cryptographic verification.',
     metric: '12x',
     metricLabel: 'Faster Clinical Trial Cohort Querying',
     complianceTags: ['HIPAA Compliant', 'HITECH', 'GDPR Article 9', 'FDA 21 CFR Part 11']
@@ -271,7 +271,7 @@ export const INDUSTRIES_LIST: IndustryItem[] = [
     tagline: 'Unified event mesh connecting warehouse robotics to global freight containers.',
     description: 'Synchronize 100,000+ IoT endpoints, automated guided vehicles, and enterprise ERP systems into a single predictable stream.',
     keyChallenge: 'Intermittent connectivity at sea and in transit hubs creating disconnected inventory silos.',
-    synthexSolution: 'Store-and-forward edge buffering with deterministic timestamp reconciliation.',
+    hexbyteSolution: 'Store-and-forward edge buffering with deterministic timestamp reconciliation.',
     metric: '38%',
     metricLabel: 'Reduction in Port Dwell & Yard Staging Delays',
     complianceTags: ['ISO 9001', 'C-TPAT', 'GS1 Standards']
@@ -282,7 +282,7 @@ export const INDUSTRIES_LIST: IndustryItem[] = [
     tagline: 'Multi-tenant cloud infrastructure scaling to 100M+ concurrent users.',
     description: 'Deliver sub-100ms video rendering, real-time collaboration, and global database reads with zero cross-tenant performance interference.',
     keyChallenge: 'Noisy neighbor tenant spikes degrading overall platform availability during flash events.',
-    synthexSolution: 'Kernel-level fair-share compute scheduling and autonomous tenant sharding.',
+    hexbyteSolution: 'Kernel-level fair-share compute scheduling and autonomous tenant sharding.',
     metric: '-62%',
     metricLabel: 'Lower P99 Tail Latency for Global End Users',
     complianceTags: ['SOC2 Type II', 'ISO 27701', 'Privacy Shield']
@@ -296,13 +296,13 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     industry: 'Capital Markets',
     headline: 'Eliminating Cloud Migration Latency for 18 Million Consumer Accounts',
     challenge: 'Helios operated a legacy mainframe core processing $12B in daily transactions. Prior attempts to migrate to hybrid cloud introduced 380ms latency spikes and frequent reconciliation timeouts.',
-    solution: 'Implemented Synthex Autonomous Data Mesh with deterministic kernel bypass and automated multi-region active-active synchronization across AWS and Azure.',
+    solution: 'Implemented Hexbyte Autonomous Data Mesh with deterministic kernel bypass and automated multi-region active-active synchronization across AWS and Azure.',
     results: [
       { value: '4.2ms', label: 'Average Global Transaction Latency' },
       { value: '100%', label: 'Zero-Downtime Migration Execution' },
       { value: '$14.2M', label: 'Annual Legacy Infrastructure Cost Saved' }
     ],
-    quote: 'Synthex provided the mathematical determinism and regulatory compliance we needed to convince our board and risk committee. We migrated without dropping a single micro-cent.',
+    quote: 'Hexbyte provided the mathematical determinism and regulatory compliance we needed to convince our board and risk committee. We migrated without dropping a single micro-cent.',
     author: 'Elena Rostova',
     role: 'Chief Technology Officer, Helios Global Bank'
   },
@@ -312,13 +312,13 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     industry: 'Industrial Supply Chain',
     headline: 'Autonomous Routing Fleet Telemetry for 4,200 Distribution Hubs',
     challenge: 'Apex suffered from fragmented telemetry across 32 regional operating software packages, leading to delayed freight tracking and container blind spots.',
-    solution: 'Deployed Synthex Edge Telemetry Mesh with store-and-forward resilience across all ground sorting facilities, marine docks, and air freight centers.',
+    solution: 'Deployed Hexbyte Edge Telemetry Mesh with store-and-forward resilience across all ground sorting facilities, marine docks, and air freight centers.',
     results: [
       { value: '99.98%', label: 'Continuous Telemetry Visibility' },
       { value: '-41%', label: 'Drop in Supply Chain Routing Exceptions' },
       { value: '2.8x', label: 'Faster Customs Clearance Documentation' }
     ],
-    quote: 'The level of real-time visibility Synthex provides is unprecedented in enterprise logistics. We scaled to peak holiday volume without a single system freeze.',
+    quote: 'The level of real-time visibility Hexbyte provides is unprecedented in enterprise logistics. We scaled to peak holiday volume without a single system freeze.',
     author: 'Marcus Vance',
     role: 'EVP of Global Logistics & Technology, Apex Corp'
   },
@@ -328,13 +328,13 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     industry: 'Healthcare Networks',
     headline: 'HIPAA-Compliant Real-Time Patient Analytics Across 48 Medical Centers',
     challenge: 'Clinical analytics teams waited 6+ hours for batch ETL pipelines to process patient vital telemetry from intensive care units.',
-    solution: 'Adopted Synthex Autonomous Data Mesh to stream and anonymize vitals in sub-second intervals directly to clinical decision support engines.',
+    solution: 'Adopted Hexbyte Autonomous Data Mesh to stream and anonymize vitals in sub-second intervals directly to clinical decision support engines.',
     results: [
       { value: '< 2s', label: 'Patient Vitals Ingestion Latency' },
       { value: '100%', label: 'HIPAA & HITECH Audit Compliance' },
       { value: '31%', label: 'Earlier Detection of Acute Clinical Trends' }
     ],
-    quote: 'Synthex transformed our data infrastructure from overnight batch reports into a live clinical nervous system that directly aids medical teams.',
+    quote: 'Hexbyte transformed our data infrastructure from overnight batch reports into a live clinical nervous system that directly aids medical teams.',
     author: 'Dr. Sarah Chen, MD',
     role: 'Chief Information & Medical Officer, Novaris Health'
   }
@@ -349,7 +349,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     avatarText: 'DR',
     rating: 5,
     highlight: 'Deterministic Stability at Unprecedented Scale',
-    quote: 'We operate in an environment where a 10-millisecond delay costs millions. Synthex gave our engineering teams total predictability across hybrid cloud deployments.'
+    quote: 'We operate in an environment where a 10-millisecond delay costs millions. Hexbyte gave our engineering teams total predictability across hybrid cloud deployments.'
   },
   {
     id: 'test-2',
@@ -369,7 +369,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     avatarText: 'RS',
     rating: 5,
     highlight: 'Immediate 42% Cloud Cost Optimization',
-    quote: 'Synthex automated our multi-cloud spot arbitrage and resource rightsizing. We lowered our annual compute spend by over $6M while actually improving P99 latency.'
+    quote: 'Hexbyte automated our multi-cloud spot arbitrage and resource rightsizing. We lowered our annual compute spend by over $6M while actually improving P99 latency.'
   }
 ];
 
@@ -472,22 +472,22 @@ export const PRICING_PLANS: PricingPlan[] = [
 export const FAQ_ITEMS: FaqItem[] = [
   {
     category: 'Architecture & Scalability',
-    question: 'How does Synthex integrate with our existing AWS, GCP, and Kubernetes clusters?',
-    answer: 'Synthex installs via non-intrusive eBPF daemonsets or lightweight host agents in under 30 minutes. It does not require rewriting your application logic, replacing your CI/CD pipelines, or altering existing VPC peering routes. It seamlessly sits beneath your workload layer, extracting telemetry and enforcing routing policies at the kernel level.'
+    question: 'How does Hexbyte integrate with our existing AWS, GCP, and Kubernetes clusters?',
+    answer: 'Hexbyte installs via non-intrusive eBPF daemonsets or lightweight host agents in under 30 minutes. It does not require rewriting your application logic, replacing your CI/CD pipelines, or altering existing VPC peering routes. It seamlessly sits beneath your workload layer, extracting telemetry and enforcing routing policies at the kernel level.'
   },
   {
     category: 'Architecture & Scalability',
-    question: 'What is the performance overhead of the Synthex telemetry mesh?',
-    answer: 'Synthex is written in high-performance Rust and modern C++ with zero-copy serialization. Resident CPU overhead is consistently measured below 0.4% per host, and memory footprint remains under 12MB. You gain complete microsecond visibility without sacrificing compute throughput.'
+    question: 'What is the performance overhead of the Hexbyte telemetry mesh?',
+    answer: 'Hexbyte is written in high-performance Rust and modern C++ with zero-copy serialization. Resident CPU overhead is consistently measured below 0.4% per host, and memory footprint remains under 12MB. You gain complete microsecond visibility without sacrificing compute throughput.'
   },
   {
     category: 'Security & Compliance',
-    question: 'How does Synthex guarantee compliance with GDPR, HIPAA, and financial regulations?',
-    answer: 'Synthex incorporates cryptographic policy-as-code boundaries. Patient or consumer PII never traverses regional boundaries without automated hardware-rooted tokenization. All operations produce immutable WORM-compliant audit logs, and our platform is independently audited under SOC2 Type II, ISO 27001, and HIPAA benchmarks annually.'
+    question: 'How does Hexbyte guarantee compliance with GDPR, HIPAA, and financial regulations?',
+    answer: 'Hexbyte incorporates cryptographic policy-as-code boundaries. Patient or consumer PII never traverses regional boundaries without automated hardware-rooted tokenization. All operations produce immutable WORM-compliant audit logs, and our platform is independently audited under SOC2 Type II, ISO 27001, and HIPAA benchmarks annually.'
   },
   {
     category: 'Security & Compliance',
-    question: 'Can Synthex run completely air-gapped without Internet connectivity?',
+    question: 'Can Hexbyte run completely air-gapped without Internet connectivity?',
     answer: 'Yes. Our Sovereign & Airgap edition runs fully disconnected inside sensitive on-premises data centers, private sovereign clouds, or SCIF facilities with zero external telemetry phone-home requirements.'
   },
   {

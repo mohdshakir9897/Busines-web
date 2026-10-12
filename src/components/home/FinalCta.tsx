@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, Shield, Download } from 'lucide-react';
+import { Link } from 'wouter';
 
 interface FinalCtaProps {
-  onOpenDemo: () => void;
+  onOpenDemo?: () => void;
   onOpenWhitepaper: () => void;
 }
 
@@ -28,13 +29,13 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onOpenDemo, onOpenWhitepaper
 
         {/* Action Buttons */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <button
-            onClick={onOpenDemo}
-            className="px-8 py-4 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-xl shadow-xl shadow-indigo-600/30 transition-all flex items-center gap-2 group whitespace-nowrap"
+          <Link
+            href="/request-consultation"
+            className="px-8 py-4 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-xl shadow-xl shadow-indigo-600/30 transition-all flex items-center gap-2 group whitespace-nowrap cursor-pointer"
           >
-            <span>Schedule Private Technical Demo</span>
+            <span>Request a Consultation</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
 
           <button
             onClick={onOpenWhitepaper}

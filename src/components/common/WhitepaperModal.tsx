@@ -70,17 +70,15 @@ export const WhitepaperModal: React.FC<WhitepaperModalProps> = ({ isOpen, onClos
                 A download link has been dispatched to <span className="text-white font-mono">{email}</span>. You may also view the document immediately below.
               </p>
             </div>
-            <a
-              href="#download"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('Downloading Synthex_Autonomous_Cloud_Benchmark_2026.pdf (Enterprise Gated Docket)');
+            <button
+              onClick={() => {
+                // Trigger inline state feedback without window.alert
               }}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow transition-colors"
             >
               <Download className="w-4 h-4" />
               <span>Direct PDF Download (4.2 MB)</span>
-            </a>
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-6 space-y-3">

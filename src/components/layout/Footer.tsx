@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { ArrowRight, Check, Globe, ShieldCheck } from 'lucide-react';
+import { Link } from 'wouter';
 import confetti from 'canvas-confetti';
 import { NAVIGATION_DATA } from '../../data/navigationData';
+import { Logo } from '../common/Logo';
+import { getActiveSocialLinks } from '../../config/site';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [error, setError] = useState('');
+  const activeSocials = getActiveSocialLinks();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +40,7 @@ export const Footer: React.FC = () => {
               Bi-weekly engineering briefs on distributed systems and eBPF
             </h3>
             <p className="text-xs text-slate-400 leading-relaxed max-w-lg">
-              Curated by Synthex principal engineers. Zero marketing fluff. Pure architecture analysis, peer benchmarks, and incident teardowns.
+              Curated by Hexbyte principal engineers. Zero marketing fluff. Pure architecture analysis, peer benchmarks, and incident teardowns.
             </p>
           </div>
 
@@ -62,7 +66,7 @@ export const Footer: React.FC = () => {
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-colors flex items-center justify-center gap-2 whitespace-nowrap shrink-0"
+                    className="px-6 py-3 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl transition-colors flex items-center justify-center gap-2 whitespace-nowrap shrink-0 cursor-pointer"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -85,11 +89,11 @@ export const Footer: React.FC = () => {
               Services
             </h4>
             <ul className="space-y-2 text-slate-400">
-              {NAVIGATION_DATA.services.slice(0, 5).map((s, idx) => (
+              {NAVIGATION_DATA.services.slice(0, 6).map((s, idx) => (
                 <li key={idx}>
-                  <a href={s.href} className="hover:text-white transition-colors block truncate">
+                  <Link href={s.href} className="hover:text-white transition-colors block truncate">
                     {s.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,9 +107,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-slate-400">
               {NAVIGATION_DATA.industries.map((ind, idx) => (
                 <li key={idx}>
-                  <a href={ind.href} className="hover:text-white transition-colors block truncate">
+                  <Link href={ind.href} className="hover:text-white transition-colors block truncate">
                     {ind.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -119,9 +123,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-slate-400">
               {NAVIGATION_DATA.proof.map((pf, idx) => (
                 <li key={idx}>
-                  <a href={pf.href} className="hover:text-white transition-colors block truncate">
+                  <Link href={pf.href} className="hover:text-white transition-colors block truncate">
                     {pf.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -135,9 +139,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-slate-400">
               {NAVIGATION_DATA.company.map((c, idx) => (
                 <li key={idx}>
-                  <a href={c.href} className="hover:text-white transition-colors block truncate">
+                  <Link href={c.href} className="hover:text-white transition-colors block truncate">
                     {c.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -149,11 +153,11 @@ export const Footer: React.FC = () => {
               Resources
             </h4>
             <ul className="space-y-2 text-slate-400">
-              {NAVIGATION_DATA.resources.slice(0, 5).map((r, idx) => (
+              {NAVIGATION_DATA.resources.map((r, idx) => (
                 <li key={idx}>
-                  <a href={r.href} className="hover:text-white transition-colors block truncate">
+                  <Link href={r.href} className="hover:text-white transition-colors block truncate">
                     {r.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -162,15 +166,14 @@ export const Footer: React.FC = () => {
           {/* Conversion & Support Column */}
           <div className="space-y-3">
             <h4 className="font-semibold text-white uppercase tracking-wider text-[11px]">
-              Conversion & Legal
+              Legal & Conversion
             </h4>
             <ul className="space-y-2 text-slate-400">
-              <li><a href="#pricing" className="hover:text-white transition-colors">Pricing & Tiers</a></li>
-              <li><a href="#demo" className="hover:text-white transition-colors">Book a Demo</a></li>
-              <li><a href="#quote" className="hover:text-white transition-colors">Request a Quote</a></li>
-              <li><a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#terms" className="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#security" className="hover:text-white transition-colors">Security Disclosures</a></li>
+              <li><Link href="/request-consultation" className="hover:text-white transition-colors">Request a Consultation</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Engineering</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link href="/cookies" className="hover:text-white transition-colors">Cookie Governance</Link></li>
             </ul>
           </div>
         </div>
@@ -195,11 +198,33 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Copyright & Locale Row */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>
-            © {new Date().getFullYear()} Synthex Global Inc. All rights reserved. Enterprise Distributed Systems.
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Logo 
+              variant="horizontal" 
+              href="/" 
+              alt="HEXBYTE logo" 
+              height={32}
+              className="hover:opacity-90"
+            />
+            <span>© 2026 HEXBYTE. All rights reserved.</span>
           </div>
 
           <div className="flex items-center gap-6">
+            {activeSocials.length > 0 && (
+              <div className="flex items-center gap-4">
+                {activeSocials.map(([platform, url]) => (
+                  <a
+                    key={platform}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="capitalize hover:text-white transition-colors"
+                  >
+                    {platform}
+                  </a>
+                ))}
+              </div>
+            )}
             <span className="font-mono text-slate-400">Locale: EN-US (Global English)</span>
             <span className="font-mono text-slate-400">Currency: USD ($)</span>
           </div>
@@ -208,3 +233,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+

@@ -258,7 +258,7 @@ export const DemoBookingModal: React.FC<DemoBookingModalProps> = ({ isOpen, onCl
             <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 max-w-sm mx-auto text-xs text-left space-y-2">
               <div className="flex justify-between text-slate-400">
                 <span>Dossier Reference:</span>
-                <span className="font-mono text-white">SYN-DEMO-2026-X89</span>
+                <span className="font-mono text-white">HEX-DEMO-2026-X89</span>
               </div>
               <div className="flex justify-between text-slate-400">
                 <span>Assigned Architect:</span>

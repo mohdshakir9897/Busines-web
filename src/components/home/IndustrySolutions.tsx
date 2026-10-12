@@ -76,10 +76,10 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
 
               <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
                 <div className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">
-                  Synthex Autonomous Architecture
+                  Hexbyte Autonomous Architecture
                 </div>
                 <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-                  {activeIndustry.synthexSolution}
+                  {activeIndustry.hexbyteSolution}
                 </p>
               </div>
             </div>
