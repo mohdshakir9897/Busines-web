@@ -37,10 +37,10 @@ export const HowItWorks: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800/80">
-                    <span className="font-mono text-xl font-extrabold text-sky-400">
+                    <span className="text-xl font-bold text-sky-400">
                       {step.step}
                     </span>
-                    <span className={`text-xs font-mono px-2 py-0.5 rounded ${
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${
                       isActive ? 'bg-sky-500/20 text-sky-300' : 'text-slate-500'
                     }`}>
                       Phase {idx + 1}
@@ -59,7 +59,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-800/80">
-                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
                     Verified Deliverable
                   </div>
                   <div className="text-xs font-semibold text-slate-200 mt-1 flex items-center gap-1.5">
@@ -72,20 +72,20 @@ export const HowItWorks: React.FC = () => {
           })}
         </div>
 
-        {/* Invariant Guarantee Strip */}
+        {/* Integration Guarantee Strip */}
         <div className="mt-12 p-6 rounded-xl bg-slate-950 border border-slate-800 flex flex-wrap items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-3 h-3 rounded-full bg-emerald-400" />
             <div>
-              <div className="text-sm font-bold text-white">Non-Intrusive eBPF Kernel Probe Architecture</div>
-              <div className="text-xs text-slate-400">Zero modification required to your application Docker containers or CI pipelines.</div>
+              <div className="text-sm font-bold text-white">Seamless Zero-Downtime Integration</div>
+              <div className="text-xs text-slate-400">Zero modifications required to your application code or container registries.</div>
             </div>
           </div>
           <a
             href="#faq"
-            className="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1"
+            className="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1 cursor-pointer"
           >
-            <span>Review implementation safety invariants</span>
+            <span>Review deployment requirements</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>

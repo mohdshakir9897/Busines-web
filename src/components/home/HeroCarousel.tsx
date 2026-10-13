@@ -94,18 +94,18 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
                 </p>
 
                 {/* Quantitative Metric Callout */}
-                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-6 max-w-lg">
+                <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-6 max-w-lg shadow-lg">
                   <div>
                     <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">
                       {currentSlide.statLabel}
                     </div>
-                    <div className="text-2xl font-bold font-mono text-white mt-0.5 tabular-nums">
+                    <div className="text-2xl font-semibold text-white mt-0.5 tabular-nums">
                       {currentSlide.statValue}
                     </div>
                   </div>
                   <div className="text-right text-xs text-slate-400 border-l border-slate-800 pl-4">
-                    <div className="text-slate-300 font-medium">Deterministic Invariant</div>
-                    <div className="text-[11px] text-slate-500">Formally proven at runtime</div>
+                    <div className="text-slate-200 font-medium">Production Verified</div>
+                    <div className="text-[11px] text-slate-400">Underwritten by 99.999% SLA</div>
                   </div>
                 </div>
 
@@ -116,7 +116,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
                     onClick={() => {
                       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                     }}
-                    className="px-6 py-3 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg shadow-indigo-600/25 transition-all flex items-center gap-2 group whitespace-nowrap cursor-pointer"
+                    className="px-6 py-3 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-md transition-all flex items-center gap-2 group whitespace-nowrap cursor-pointer"
                   >
                     <span>{currentSlide.primaryCtaText}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -131,7 +131,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
                         target?.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className="px-5 py-3 text-sm font-semibold text-slate-200 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 rounded-lg transition-colors whitespace-nowrap"
+                    className="px-5 py-3 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 rounded-xl transition-all whitespace-nowrap cursor-pointer"
                   >
                     {currentSlide.secondaryCtaText}
                   </button>
@@ -141,47 +141,31 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenDemo, onOpenWh
           </div>
 
           {/* Column 2: Animated Video & High-Tech Telemetry Stream */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-800/90 bg-slate-900 shadow-2xl group">
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] w-full overflow-hidden">
-                <HeroVideoDisplay
-                  posterImage={currentSlide.imageUrl}
-                  accentColor={currentSlide.accentColor}
-                  slideId={currentSlide.id}
-                />
-              </div>
-
-              {/* Lower HUD status strip */}
-              <div className="relative z-20 px-5 py-3.5 bg-slate-950/90 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <Terminal className="w-3.5 h-3.5 text-sky-400" />
-                  <span className="font-mono text-[11px] text-slate-300">HEXBYTE-EVENT-STREAM-ACTIVE</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-400">
-                  <Shield className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-[11px]">Hardware Enclave Verified</span>
-                </div>
-              </div>
-            </div>
+          <div className="lg:col-span-5 relative w-full flex items-center justify-center">
+            <HeroVideoDisplay
+              posterImage={currentSlide.imageUrl}
+              accentColor={currentSlide.accentColor}
+              slideId={currentSlide.id}
+            />
           </div>
         </div>
 
         {/* Carousel Navigation Controller & Slide Progress Bar */}
-        <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="mt-10 pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           {/* Slide Indicator Tabs */}
           <div className="flex items-center gap-2 flex-wrap">
             {HERO_SLIDES.map((slide, idx) => (
               <button
                 key={slide.id}
                 onClick={() => handleSelectSlide(idx)}
-                className={`text-left px-3.5 py-2 rounded-lg text-xs transition-all ${
+                className={`text-left px-3.5 py-2 rounded-xl text-xs transition-all cursor-pointer ${
                   currentSlideIndex === idx
-                    ? 'bg-slate-800 text-white font-semibold border border-slate-700 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent'
+                    ? 'bg-slate-800/90 text-white font-semibold border border-white/15 shadow-sm shadow-indigo-500/10'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 border border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[10px] text-slate-500">0{idx + 1}</span>
+                  <span className="text-[11px] font-medium text-slate-500">0{idx + 1}</span>
                   <span className="truncate max-w-[140px]">{slide.badge}</span>
                 </div>
                 {currentSlideIndex === idx && (

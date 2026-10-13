@@ -4,6 +4,7 @@ import { SeoMetadata } from '../components/common/SeoMetadata';
 import { Mail, Phone, MessageSquare, Shield, Clock, MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useLocation } from 'wouter';
 import confetti from 'canvas-confetti';
+import { saveLead } from '../utils/leadStorage';
 
 export const ContactPage: React.FC = () => {
   const [, setLocation] = useLocation();
@@ -24,6 +25,16 @@ export const ContactPage: React.FC = () => {
       if (!form.name || !form.email || !form.company) return;
       setStep(2);
     } else {
+      saveLead({
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        nodes: form.workloadSize,
+        timeline: 'Immediate (Within 4h)',
+        source: form.inquiryType,
+        notes: form.message,
+      });
+
       try {
         confetti({ particleCount: 60, spread: 60 });
       } catch {

@@ -93,14 +93,14 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenDe
             {/* Right Quantitative Metrics Column */}
             <div className="lg:col-span-5 flex flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-slate-800 pt-8 lg:pt-0 lg:pl-10">
               <div className="space-y-6">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                   Quantified Impact Summary
                 </div>
 
                 <div className="space-y-4">
                   {currentCase.results.map((res, rIdx) => (
                     <div key={rIdx} className="p-4 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                      <div className="text-3xl font-extrabold font-mono text-emerald-400 tabular-nums">
+                      <div className="text-3xl font-extrabold text-emerald-400 tracking-tight tabular-nums">
                         {res.value}
                       </div>
                       <div className="text-xs font-semibold text-slate-300 mt-1">

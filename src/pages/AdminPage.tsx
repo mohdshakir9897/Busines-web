@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SeoMetadata } from '../components/common/SeoMetadata';
 import { Logo } from '../components/common/Logo';
-import { Shield, Lock, Download, Users, Mail, FileText, CheckCircle2, Search, LogOut } from 'lucide-react';
+import { Shield, Lock, Download, Users, Mail, FileText, CheckCircle2, Search, LogOut, RefreshCw } from 'lucide-react';
+import { getStoredLeads, getStoredSubscribers, LeadRecord, SubscriberRecord } from '../utils/leadStorage';
 
 export const AdminPage: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -9,28 +10,26 @@ export const AdminPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState<'leads' | 'subscribers' | 'content'>('leads');
+  const [leads, setLeads] = useState<LeadRecord[]>([]);
+  const [subscribers, setSubscribers] = useState<SubscriberRecord[]>([]);
 
-  const [leads] = useState([
-    { id: 'LD-9021', name: 'Alexander Wright', company: 'Goldman Prime Services', email: 'a.wright@gs.com', nodes: '10,000+ Nodes', timeline: 'Immediate', status: 'Architect Assigned', date: '2026-10-10' },
-    { id: 'LD-9020', name: 'Dr. Rebecca Stern', company: 'Mayo Research Network', email: 'stern.rebecca@mayo.edu', nodes: '2,500 - 10,000 Nodes', timeline: '30 Days', status: 'In Review', date: '2026-10-09' },
-    { id: 'LD-9019', name: 'Kenji Sato', company: 'Tokyo Financial Exchange', email: 'sato.k@tfx.co.jp', nodes: '500 - 2,500 Nodes', timeline: 'Immediate', status: 'Briefing Queued', date: '2026-10-08' },
-    { id: 'LD-9018', name: 'Claire Dubois', company: 'CMA CGM Logistics', email: 'c.dubois@cmacgm.fr', nodes: '10,000+ Nodes', timeline: '90 Days', status: 'Pilot Scheduled', date: '2026-10-07' },
-  ]);
+  useEffect(() => {
+    setLeads(getStoredLeads());
+    setSubscribers(getStoredSubscribers());
+  }, [isAuthenticated]);
 
-  const [subscribers] = useState([
-    { email: 'head.infra@vanguard.com', role: 'Head of Infrastructure', date: '2026-10-10' },
-    { email: 'ciso@astrazene.com', role: 'CISO Office', date: '2026-10-09' },
-    { email: 'dist.systems@stripe.com', role: 'Staff Systems Eng', date: '2026-10-08' },
-    { email: 'platform@novaris.org', role: 'VP Platform Eng', date: '2026-10-07' },
-  ]);
+  const refreshData = () => {
+    setLeads(getStoredLeads());
+    setSubscribers(getStoredSubscribers());
+  };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'admin123' || password === 'hexbyte2026' || password.length >= 6) {
+    if (password === 'admin123' || password === 'hexbyte2026' || password.toLowerCase() === 'admin') {
       setIsAuthenticated(true);
       setError('');
     } else {
-      setError('Invalid owner credentials. Please try again.');
+      setError('Invalid credentials. (Hint: use "hexbyte2026" or "admin123")');
     }
   };
 
@@ -39,8 +38,8 @@ export const AdminPage: React.FC = () => {
     let filename = '';
 
     if (type === 'leads') {
-      csvContent = 'ID,Name,Company,Email,Nodes,Timeline,Status,Date\n' +
-        leads.map(l => `${l.id},"${l.name}","${l.company}",${l.email},"${l.nodes}","${l.timeline}","${l.status}",${l.date}`).join('\n');
+      csvContent = 'ID,Name,Company,Email,Nodes,Timeline,Status,Date,Source,Notes\n' +
+        leads.map(l => `${l.id},"${l.name}","${l.company}",${l.email},"${l.nodes}","${l.timeline}","${l.status}",${l.date},"${l.source || ''}","${l.notes || ''}"`).join('\n');
       filename = 'hexbyte_enterprise_leads.csv';
     } else {
       csvContent = 'Email,Role,Date\n' +

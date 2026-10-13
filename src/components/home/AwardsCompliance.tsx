@@ -26,7 +26,7 @@ export const AwardsCompliance: React.FC = () => {
                   <div className="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
                     {idx < 2 ? <Award className="w-5 h-5" /> : <ShieldCheck className="w-5 h-5" />}
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-indigo-300 font-semibold">
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-indigo-300">
                     {item.badge}
                   </span>
                 </div>

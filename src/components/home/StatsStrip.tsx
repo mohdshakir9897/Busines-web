@@ -35,7 +35,7 @@ export const StatsStrip: React.FC = () => {
               className="p-6 rounded-xl border border-slate-800/80 bg-slate-950/60 flex flex-col justify-between hover:border-slate-700 transition-colors"
             >
               <div>
-                <div className="text-3xl lg:text-4xl font-extrabold font-mono text-white tracking-tight tabular-nums">
+                <div className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight tabular-nums">
                   {stat.value}
                 </div>
                 <div className="text-sm font-semibold text-indigo-300 mt-2">

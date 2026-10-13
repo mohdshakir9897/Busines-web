@@ -38,7 +38,7 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent'
               }`}
             >
-              <span className="font-mono text-slate-500 mr-2">0{idx + 1}</span>
+              <span className="text-slate-500 mr-2 font-medium">0{idx + 1}</span>
               <span>{ind.name}</span>
             </button>
           ))}
@@ -48,8 +48,8 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
         <div className="p-8 lg:p-10 rounded-2xl bg-slate-900/60 border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-6">
             <div>
-              <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider">
-                Vertical Architecture Dossier
+              <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+                Industry Architecture
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mt-1">
                 {activeIndustry.name}
@@ -67,7 +67,7 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
                 <div className="text-[11px] font-semibold text-rose-400 uppercase tracking-wider">
-                  The Critical Bottleneck
+                  The Key Challenge
                 </div>
                 <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
                   {activeIndustry.keyChallenge}
@@ -76,7 +76,7 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
 
               <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
                 <div className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">
-                  Hexbyte Autonomous Architecture
+                  Hexbyte Architecture
                 </div>
                 <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
                   {activeIndustry.hexbyteSolution}
@@ -86,14 +86,14 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
 
             {/* Compliance Badges */}
             <div>
-              <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">
+              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 Certified Regulatory Frameworks
               </div>
               <div className="flex flex-wrap gap-2">
                 {activeIndustry.complianceTags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-mono bg-slate-950 border border-slate-800 text-slate-300"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-slate-950 border border-slate-800 text-slate-300"
                   >
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                     <span>{tag}</span>
@@ -105,7 +105,7 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
             <div className="pt-2">
               <button
                 onClick={onOpenDemo}
-                className="px-5 py-2.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow transition-colors flex items-center gap-2"
+                className="px-5 py-2.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <span>Request {activeIndustry.name} Blueprint</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -116,10 +116,10 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
           {/* Metric Highlight Box */}
           <div className="lg:col-span-5 p-8 rounded-2xl bg-gradient-to-br from-indigo-950/40 to-slate-950 border border-indigo-500/30 flex flex-col justify-between h-full min-h-[300px]">
             <div>
-              <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
-                Verified Production Outcome
+              <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+                Production Outcome
               </span>
-              <div className="text-4xl sm:text-5xl font-extrabold font-mono text-white mt-4 tabular-nums">
+              <div className="text-4xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight tabular-nums">
                 {activeIndustry.metric}
               </div>
               <div className="text-sm font-semibold text-indigo-200 mt-2">
@@ -130,11 +130,11 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
             <div className="mt-8 pt-6 border-t border-slate-800/80 space-y-2">
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Zero downtime sovereign cluster provisioning</span>
+                <span>Zero downtime cluster provisioning</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Automated continuous auditor evidence generation</span>
+                <span>Continuous auditor evidence generation</span>
               </div>
             </div>
           </div>

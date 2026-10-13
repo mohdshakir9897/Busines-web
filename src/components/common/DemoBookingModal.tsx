@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ArrowRight, ArrowLeft, CheckCircle2, Shield, Calendar, Building, Server, Mail, MessageSquare } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { saveLead } from '../../utils/leadStorage';
 
 interface DemoBookingModalProps {
   isOpen: boolean;
@@ -27,6 +28,16 @@ export const DemoBookingModal: React.FC<DemoBookingModalProps> = ({ isOpen, onCl
       if (!formData.name || !formData.email || !formData.company) return;
       setStep(2);
     } else if (step === 2) {
+      saveLead({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        nodes: formData.nodeCount,
+        timeline: formData.timeline,
+        source: 'Interactive Architecture Briefing',
+        notes: `Cloud: ${formData.cloudProvider}. ${formData.notes}`,
+      });
+
       setStep(3);
       try {
         confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
