@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hexGrad" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#00D2FF" />
+      <stop offset="35%" stop-color="#3A86FF" />
+      <stop offset="70%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    <linearGradient id="hGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#9333EA" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#00D2FF" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <!-- Background with smooth rounded corners -->
+  <rect width="512" height="512" rx="112" fill="#070712" />
+  
+  <!-- Outer Hexagon -->
+  <polygon points="256,84 405,170 405,342 256,428 107,342 107,170" 
+           fill="none" 
+           stroke="url(#hexGrad)" 
+           stroke-width="44" 
+           stroke-linejoin="round"
+           filter="url(#shadow)" />
+           
+  <!-- Inner Bold 'H' Mark -->
+  <g fill="url(#hGrad)">
+    <!-- Left bar -->
+    <rect x="182" y="172" width="42" height="168" rx="4" />
+    <!-- Horizontal crossbar -->
+    <rect x="216" y="235" width="80" height="42" rx="2" />
+    <!-- Right bar -->
+    <rect x="288" y="172" width="42" height="168" rx="4" />
+  </g>
+</svg>
