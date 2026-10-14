@@ -19,7 +19,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     primaryCtaAction: 'consultation',
     secondaryCtaText: 'Explore Architecture',
     secondaryCtaAction: 'architecture',
-    imageUrl: '/src/assets/images/hero_enterprise_datacenter_1791612780894.jpg',
+    imageUrl: '/images/hero_enterprise_datacenter_1791612780894.jpg',
     statLabel: 'Operational Uptime SLA',
     statValue: '99.999%',
     accentColor: '#3B82F6'
@@ -34,7 +34,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     primaryCtaAction: 'consultation',
     secondaryCtaText: 'View Case Studies',
     secondaryCtaAction: 'cases',
-    imageUrl: '/src/assets/images/hero_autonomous_operations_1791612800790.jpg',
+    imageUrl: '/images/hero_autonomous_operations_1791612800790.jpg',
     statLabel: 'Mean Time to Resolution (MTTR)',
     statValue: '-74%',
     accentColor: '#6366F1'
@@ -49,7 +49,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     primaryCtaAction: 'consultation',
     secondaryCtaText: 'Contact Capital Markets Team',
     secondaryCtaAction: 'consultation',
-    imageUrl: '/src/assets/images/hero_fintech_security_1791612816960.jpg',
+    imageUrl: '/images/hero_fintech_security_1791612816960.jpg',
     statLabel: 'Annual Volume Cleared',
     statValue: '$42B+',
     accentColor: '#0EA5E9'
@@ -64,7 +64,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     primaryCtaAction: 'consultation',
     secondaryCtaText: 'Download Supply Report',
     secondaryCtaAction: 'resources',
-    imageUrl: '/src/assets/images/hero_global_logistics_1791612830723.jpg',
+    imageUrl: '/images/hero_global_logistics_1791612830723.jpg',
     statLabel: 'Routing Efficiency Boost',
     statValue: '+38%',
     accentColor: '#10B981'

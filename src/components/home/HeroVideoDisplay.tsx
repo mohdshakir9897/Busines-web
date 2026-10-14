@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, Activity, Radio, Cpu, RefreshCw } from 'lucide-react';
+import { Play, Pause, Activity, Radio } from 'lucide-react';
 
 interface HeroVideoDisplayProps {
   posterImage: string;
@@ -8,12 +7,12 @@ interface HeroVideoDisplayProps {
   slideId: string;
 }
 
-// Curated high-performance animated tech video streams with instant fallback
+// Local hero video streams referenced under /videos/
 const VIDEO_STREAMS: Record<string, string> = {
-  'datacenter-scale': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-  'autonomous-ops': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-  'fintech-security': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-  'global-logistics': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4',
+  'datacenter-scale': '/videos/hero-1.mp4',
+  'autonomous-ops': '/videos/hero-2.mp4',
+  'fintech-security': '/videos/hero-3.mp4',
+  'global-logistics': '/videos/hero-4.mp4',
 };
 
 export const HeroVideoDisplay: React.FC<HeroVideoDisplayProps> = ({
@@ -23,11 +22,73 @@ export const HeroVideoDisplay: React.FC<HeroVideoDisplayProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [videoError, setVideoError] = useState(false);
+  const [posterError, setPosterError] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [activeTab, setActiveTab] = useState<'video' | 'telemetry'>('video');
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const videoSrc = VIDEO_STREAMS[slideId] || VIDEO_STREAMS['datacenter-scale'];
+
+  // Normalize poster image path so it always loads from /images/
+  const resolvedPoster = posterImage
+    ? posterImage.replace(/^\/src\/assets\/images\//, '/images/')
+    : '/images/hero-1.jpg';
+
+  // Listen to prefers-reduced-motion and viewport width for mobile
+  useEffect(() => {
+    // 1. Reduced motion check
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(motionQuery.matches);
+    const onMotionChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    motionQuery.addEventListener('change', onMotionChange);
+
+    // 2. Mobile viewport / touch device check
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const checkMobile = () => {
+      const isSmall = mobileQuery.matches || window.innerWidth <= 768;
+      const isTouchMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent || ''
+      );
+      setIsMobile(isSmall || isTouchMobile);
+    };
+    checkMobile();
+    mobileQuery.addEventListener('change', checkMobile);
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      motionQuery.removeEventListener('change', onMotionChange);
+      mobileQuery.removeEventListener('change', checkMobile);
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  const skipVideo = isMobile || prefersReducedMotion;
+
+  // Reset video state when slide changes
+  useEffect(() => {
+    setVideoError(false);
+    setPosterError(false);
+    setIsVideoReady(false);
+    setIsPlaying(true);
+  }, [slideId]);
+
+  // Ensure video element plays and remains muted for autoplay compliance
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      if (isPlaying && !skipVideo && !videoError) {
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Browser autoplay rejection or media 404
+          });
+        }
+      }
+    }
+  }, [videoSrc, isPlaying, skipVideo, videoError]);
 
   // Toggle play/pause
   const togglePlay = () => {
@@ -41,7 +102,7 @@ export const HeroVideoDisplay: React.FC<HeroVideoDisplayProps> = ({
     }
   };
 
-  // High-performance animated holographic telemetry loop on canvas (60fps GIF/anim simulation)
+  // High-performance animated holographic telemetry loop on canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -133,7 +194,7 @@ export const HeroVideoDisplay: React.FC<HeroVideoDisplayProps> = ({
   }, [activeTab]);
 
   return (
-    <div className="relative w-full h-full overflow-hidden rounded-2xl bg-slate-950">
+    <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#070712]">
       {/* Top Media Switcher Bar */}
       <div className="absolute top-3 left-3 z-30 flex items-center gap-1.5 p-1 rounded-lg bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[11px] font-medium">
         <button
@@ -156,40 +217,65 @@ export const HeroVideoDisplay: React.FC<HeroVideoDisplayProps> = ({
         </button>
       </div>
 
-      {/* Video Stream Element */}
+      {/* Video Stream Element & Visual Fallback */}
       {activeTab === 'video' && (
-        <div className="relative w-full h-full">
-          <video
-            ref={videoRef}
-            key={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster={posterImage}
-            onError={() => setVideoError(true)}
-            className="w-full h-full object-cover opacity-85 transition-opacity duration-500"
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+        <div className="relative w-full h-full bg-[#070712] overflow-hidden">
+          {/* 1. Premium Animated Gradient Mesh Fallback in Brand Colors #22D3EE, #3B82F6, #8B5CF6, #D946EF on #070712 */}
+          <div className="hero-mesh-container" aria-hidden="true">
+            <div className="hero-mesh-cyan" />
+            <div className="hero-mesh-blue" />
+            <div className="hero-mesh-violet" />
+            <div className="hero-mesh-fuchsia" />
+            <div 
+              className="absolute inset-0 opacity-15"
+              style={{
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
+                backgroundSize: '24px 24px'
+              }}
+            />
+          </div>
 
-          {/* Fallback to Poster/GIF animation if video fails */}
-          {videoError && (
+          {/* 2. Poster Image from /images/ (displayed on mobile, reduced-motion, video fallback, or initial load) */}
+          {!posterError && resolvedPoster && (
             <img
-              src={posterImage}
-              alt="Live telemetry visual"
-              className="absolute inset-0 w-full h-full object-cover opacity-80"
+              src={resolvedPoster}
+              alt="Hexbyte live telemetry visual"
+              onError={() => setPosterError(true)}
+              className="absolute inset-0 w-full h-full object-cover opacity-85 transition-opacity duration-500"
             />
           )}
 
-          {/* Video Control Play/Pause Button */}
-          <button
-            onClick={togglePlay}
-            className="absolute bottom-3 right-3 z-30 p-2 rounded-lg bg-slate-950/80 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-900 transition-colors"
-            aria-label={isPlaying ? 'Pause live video stream' : 'Play live video stream'}
-          >
-            {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-sky-400" />}
-          </button>
+          {/* 3. Hero Video Element: skipped on mobile or reduced-motion, hidden if error occurs */}
+          {!skipVideo && !videoError && (
+            <video
+              ref={videoRef}
+              key={videoSrc}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={resolvedPoster}
+              onError={() => setVideoError(true)}
+              onLoadedData={() => setIsVideoReady(true)}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                isVideoReady ? 'opacity-85' : 'opacity-0'
+              }`}
+            >
+              <source src={videoSrc} type="video/mp4" onError={() => setVideoError(true)} />
+            </video>
+          )}
+
+          {/* Video Control Play/Pause Button - shown only when video is active & ready */}
+          {!skipVideo && !videoError && isVideoReady && (
+            <button
+              onClick={togglePlay}
+              className="absolute bottom-3 right-3 z-30 p-2 rounded-lg bg-slate-950/80 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-900 transition-colors"
+              aria-label={isPlaying ? 'Pause live video stream' : 'Play live video stream'}
+            >
+              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-sky-400" />}
+            </button>
+          )}
         </div>
       )}
 
@@ -220,7 +306,7 @@ export const HeroVideoDisplay: React.FC<HeroVideoDisplayProps> = ({
       {/* Top right live status badge */}
       <div className="absolute top-3 right-3 z-30 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[10px] font-mono text-emerald-400">
         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-        <span>LIVE FEED 60FPS</span>
+        <span>{!skipVideo && !videoError && isVideoReady ? 'LIVE FEED 60FPS' : 'TELEMETRY STREAM'}</span>
       </div>
     </div>
   );
