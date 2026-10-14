@@ -6,6 +6,8 @@ import { SeoMetadata } from '../components/common/SeoMetadata';
 import { SERVICE_CATEGORIES, ALL_SERVICES } from '../data/allServicesData';
 import { ArrowRight, Cpu, Database, Globe, Smartphone, Cloud, Layers, Sliders, CheckCircle2 } from 'lucide-react';
 
+import { getServiceShowcaseData } from '../utils/serviceImageResolver';
+
 interface ServicesOverviewPageProps {
   onOpenDemo?: () => void;
   onOpenWhitepaper?: () => void;
@@ -31,7 +33,7 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
       <SeoMetadata
         title="Enterprise Engineering Services & Capabilities"
         description="Comprehensive suite of 54 specialized enterprise engineering capabilities across AI, Data, Web, Mobile, Cloud, and Blockchain."
@@ -54,12 +56,12 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
       />
 
       {/* Category Hubs Navigation Bar */}
-      <section className="py-8 bg-slate-900/60 border-b border-slate-800 sticky top-16 z-30 backdrop-blur-md">
+      <section className="py-6 bg-slate-900/80 border-b border-slate-800 sticky top-16 z-30 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+          <div className="flex items-center gap-2.5 overflow-x-auto pb-1 no-scrollbar">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                 selectedCategory === 'all'
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
@@ -71,14 +73,14 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
               <button
                 key={cat.category}
                 onClick={() => setSelectedCategory(cat.category)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-2 ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-2 cursor-pointer ${
                   selectedCategory === cat.category
                     ? 'bg-indigo-600 text-white shadow-sm'
                     : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
                 }`}
               >
                 <span>{cat.name}</span>
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-950 text-slate-300">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-950 text-slate-300 border border-slate-800">
                   {cat.serviceCount}
                 </span>
               </button>
@@ -87,40 +89,71 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
         </div>
       </section>
 
-      {/* Category Hub Summary Cards */}
+      {/* Category Hub Summary Cards with Visual Showcases */}
       {selectedCategory === 'all' && (
         <section className="py-16 bg-slate-950 border-b border-slate-800">
           <div className="max-w-7xl mx-auto px-6">
-            <h3 className="text-xl font-bold text-white mb-8">7 Core Domain Hubs</h3>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+              <div>
+                <span className="text-xs font-semibold text-indigo-400 tracking-wider uppercase">Domain Architecture</span>
+                <h3 className="text-2xl font-bold text-white mt-1">7 Core Domain Hubs</h3>
+              </div>
+              <p className="text-sm text-slate-400 max-w-md">
+                Each engineering domain is supported by specialized architects, pre-audited blueprints, and automated compliance toolchains.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICE_CATEGORIES.map(cat => (
-                <Link
-                  key={cat.category}
-                  href={`/services/${cat.category}`}
-                  className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-indigo-500/60 hover:bg-slate-900 transition-all flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
-                      <div className="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center">
-                        {getCategoryIcon(cat.category)}
+              {SERVICE_CATEGORIES.map(cat => {
+                const showcase = getServiceShowcaseData(cat.category);
+                return (
+                  <Link
+                    key={cat.category}
+                    href={`/services/${cat.category}`}
+                    className="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/60 hover:bg-slate-900 transition-all overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-indigo-500/10"
+                  >
+                    <div>
+                      {/* Domain Showcase Thumbnail */}
+                      <div className="relative h-44 w-full overflow-hidden bg-slate-950 border-b border-slate-800">
+                        <img
+                          src={showcase.image}
+                          alt={`${cat.name} Platform Preview`}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                        
+                        {/* Domain Badge */}
+                        <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950/80 backdrop-blur-md border border-slate-700/60 text-xs font-medium text-slate-200">
+                          {getCategoryIcon(cat.category)}
+                          <span className="font-semibold text-white">{cat.name}</span>
+                        </div>
+
+                        {/* Capability Count Pill */}
+                        <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-indigo-600/90 backdrop-blur-sm text-[11px] font-semibold text-white shadow">
+                          {cat.serviceCount} Capabilities
+                        </div>
                       </div>
-                      <span className="text-xs font-mono text-indigo-400 font-semibold">
-                        {cat.serviceCount} Capabilities
-                      </span>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <h4 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
+                          {cat.name}
+                        </h4>
+                        <p className="text-xs text-slate-400 mt-2 leading-relaxed line-clamp-2">
+                          {cat.tagline}
+                        </p>
+                      </div>
                     </div>
-                    <h4 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
-                      {cat.name}
-                    </h4>
-                    <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                      {cat.tagline}
-                    </p>
-                  </div>
-                  <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-semibold text-indigo-400">
-                    <span>Explore Domain Hub</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-              ))}
+
+                    <div className="px-6 pb-6 pt-2">
+                      <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-indigo-400 group-hover:text-indigo-300">
+                        <span>Explore Domain Hub</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -129,31 +162,32 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
       {/* Services Grid (Filterable) */}
       <section className="py-20 bg-slate-950 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <h3 className="text-2xl font-bold text-white">
+              <span className="text-xs font-semibold text-indigo-400 tracking-wider uppercase">Capabilities Directory</span>
+              <h3 className="text-2xl font-bold text-white mt-1">
                 {selectedCategory === 'all' ? 'All 54 Specialized Services' : `${filteredServices.length} Services in this Category`}
               </h3>
               <p className="text-xs text-slate-400 mt-1">
-                Click any service to view detailed technical specifications, architecture diagrams, and FAQs.
+                Click any service to view live platform showcases, technical specifications, architecture diagrams, and SLAs.
               </p>
             </div>
-            <span className="text-xs font-mono text-slate-500">
+            <span className="text-xs font-semibold text-slate-400 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800">
               Showing {filteredServices.length} of 54
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredServices.map((svc, idx) => (
+            {filteredServices.map((svc) => (
               <Link
                 key={svc.slug}
                 href={`/services/${svc.category}/${svc.slug}`}
-                className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-indigo-500/60 hover:bg-slate-900 transition-all flex flex-col justify-between group"
+                className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-indigo-500/60 hover:bg-slate-900 transition-all flex flex-col justify-between group shadow-sm hover:shadow-indigo-500/10"
               >
                 <div>
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-xs">
-                    <span className="font-mono text-slate-500">{svc.category.toUpperCase()}</span>
-                    <span className="font-mono text-emerald-400 font-semibold">{svc.heroStat.value}</span>
+                    <span className="font-semibold text-slate-400 uppercase tracking-wide">{svc.category}</span>
+                    <span className="font-semibold text-emerald-400">{svc.heroStat.value}</span>
                   </div>
                   <h4 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">
                     {svc.title}
@@ -163,7 +197,7 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
                   </p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {svc.techStack.slice(0, 3).map((tech, tIdx) => (
-                      <span key={tIdx} className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-950 border border-slate-800 text-slate-400">
+                      <span key={tIdx} className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-950 border border-slate-800 text-slate-300">
                         {tech}
                       </span>
                     ))}
@@ -171,7 +205,7 @@ export const ServicesOverviewPage: React.FC<ServicesOverviewPageProps> = ({ onOp
                 </div>
                 <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-semibold text-indigo-400 group-hover:text-indigo-300">
                   <span>View Specification</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                 </div>
               </Link>
             ))}
