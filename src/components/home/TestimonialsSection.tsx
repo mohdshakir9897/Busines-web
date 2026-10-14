@@ -4,7 +4,7 @@ import { TESTIMONIALS } from '../../data/homeContent';
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <section id="testimonials" className="py-24 lg:py-36 bg-slate-950 border-b border-slate-800 relative">
+    <section id="testimonials" className="py-20 lg:py-28 bg-slate-950 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-3xl mb-16">
           <div className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
@@ -32,7 +32,7 @@ export const TestimonialsSection: React.FC = () => {
                       <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <div className="flex items-center gap-1 text-[11px] font-semibold text-emerald-400">
+                  <div className="flex items-center gap-1 text-[11px] font-mono text-emerald-400">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Verified C-Level</span>
                   </div>
@@ -49,7 +49,7 @@ export const TestimonialsSection: React.FC = () => {
 
               {/* Author attribution */}
               <div className="mt-8 pt-4 border-t border-slate-800/60 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center font-bold text-xs text-indigo-300 shrink-0">
+                <div className="w-10 h-10 rounded-full bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center font-mono font-bold text-xs text-indigo-300 shrink-0">
                   {item.avatarText}
                 </div>
                 <div>

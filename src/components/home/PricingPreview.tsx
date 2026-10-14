@@ -11,18 +11,18 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
   const [annualBilling, setAnnualBilling] = useState(true);
 
   return (
-    <section id="pricing" className="py-24 lg:py-36 bg-slate-950 border-b border-slate-800 relative">
+    <section id="pricing" className="py-20 lg:py-28 bg-slate-950 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">
-            Transparent Enterprise SaaS Licensing
+            Transparent Enterprise Architecture Licensing
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight text-balance">
-            Predictable Platform Pricing Without Overage Penalties
+            Predictable Node-Based Pricing Without Overage Penalties
           </h2>
           <p className="text-base text-slate-300 mt-4 leading-relaxed">
-            All plans include automated multi-cloud failover, 99.999% SLA uptime guarantee, and continuous SOC 2 compliance governance.
+            All plans include our zero-latency eBPF telemetry mesh, automated multi-cloud failover, and hardware-backed cryptographic security.
           </p>
 
           {/* Interactive Billing Toggle */}
@@ -42,7 +42,7 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
               }`}
             >
               <span>Annual Contract</span>
-              <span className="text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">
                 Save 20%
               </span>
             </button>
@@ -56,29 +56,29 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
             return (
               <div
                 key={plan.id}
-                className={`p-8 rounded-3xl border flex flex-col justify-between relative transition-all duration-300 glass-card-interactive ${
+                className={`p-8 rounded-3xl border flex flex-col justify-between relative transition-all duration-200 ${
                   plan.popular
-                    ? 'glass-luxury border-sky-400/40 shadow-2xl shadow-indigo-950/60 ring-1 ring-sky-400/30'
-                    : 'glass-luxury border-white/[0.08] hover:border-white/20'
+                    ? 'bg-slate-900 border-indigo-500 shadow-2xl shadow-indigo-950/60 ring-1 ring-indigo-500/40'
+                    : 'bg-slate-950 border-slate-800/80 hover:border-slate-700'
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-sky-400 to-indigo-600 text-white text-[11px] font-bold tracking-wider uppercase shadow-lg shadow-sky-500/20">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-sky-500 text-white text-[11px] font-bold tracking-wider uppercase shadow">
                     Most Popular for Global Scale
                   </div>
                 )}
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">
                       {plan.tier}
                     </span>
-                    <span className="text-xs font-semibold text-sky-400">
+                    <span className="text-xs font-medium text-indigo-400">
                       {plan.specs.sla}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mt-2 font-display">
+                  <h3 className="text-2xl font-bold text-white mt-2">
                     {plan.name}
                   </h3>
                   <p className="text-xs text-slate-400 mt-2 leading-relaxed min-h-[38px]">
@@ -86,9 +86,9 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
                   </p>
 
                   {/* Price Tag */}
-                  <div className="mt-6 pb-6 border-b border-white/[0.08]">
+                  <div className="mt-6 pb-6 border-b border-slate-800">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-4xl font-extrabold text-white tracking-tight tabular-nums">
+                      <span className="text-4xl font-extrabold font-mono text-white tracking-tight tabular-nums">
                         {typeof price === 'number' ? `$${price.toLocaleString()}` : price}
                       </span>
                       {typeof price === 'number' && (
@@ -103,7 +103,7 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
                   </div>
 
                   {/* Architecture Specs */}
-                  <div className="py-4 space-y-2 border-b border-white/[0.08] text-xs">
+                  <div className="py-4 space-y-2 border-b border-slate-800 text-xs">
                     <div className="flex justify-between text-slate-300">
                       <span className="text-slate-400">Compute Scope:</span>
                       <span className="font-medium text-white">{plan.specs.nodes}</span>
@@ -120,8 +120,8 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
 
                   {/* Features List */}
                   <div className="mt-6 space-y-2.5">
-                    <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                      Included Platform Features
+                    <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                      Core Platform Invariants
                     </div>
                     {plan.features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-300">
@@ -135,10 +135,10 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
                 <div className="mt-8 pt-4">
                   <Link
                     href="/request-consultation"
-                    className={`w-full py-3.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 ${
+                    className={`w-full py-3 px-4 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                       plan.popular
-                        ? 'bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-lg shadow-indigo-600/30'
-                        : 'glass-luxury hover:bg-slate-800 text-slate-200 hover:text-white border border-white/10'
+                        ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30'
+                        : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
                     }`}
                   >
                     <span>Request a Consultation</span>

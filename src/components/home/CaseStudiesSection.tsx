@@ -19,7 +19,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenDe
   };
 
   return (
-    <section id="case-studies" className="py-24 lg:py-36 bg-slate-900/50 border-b border-slate-800 relative">
+    <section id="case-studies" className="py-20 lg:py-28 bg-slate-900/50 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -93,14 +93,14 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenDe
             {/* Right Quantitative Metrics Column */}
             <div className="lg:col-span-5 flex flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-slate-800 pt-8 lg:pt-0 lg:pl-10">
               <div className="space-y-6">
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
                   Quantified Impact Summary
                 </div>
 
                 <div className="space-y-4">
                   {currentCase.results.map((res, rIdx) => (
                     <div key={rIdx} className="p-4 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                      <div className="text-3xl font-extrabold text-emerald-400 tracking-tight tabular-nums">
+                      <div className="text-3xl font-extrabold font-mono text-emerald-400 tabular-nums">
                         {res.value}
                       </div>
                       <div className="text-xs font-semibold text-slate-300 mt-1">

@@ -9,7 +9,7 @@ interface FinalCtaProps {
 
 export const FinalCta: React.FC<FinalCtaProps> = ({ onOpenDemo, onOpenWhitepaper }) => {
   return (
-    <section className="py-28 lg:py-36 bg-gradient-to-b from-slate-950 via-indigo-950/40 to-slate-950 border-b border-slate-800 relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-gradient-to-b from-slate-950 via-indigo-950/40 to-slate-950 border-b border-slate-800 relative overflow-hidden">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-600/15 blur-[120px] rounded-full pointer-events-none" />
 

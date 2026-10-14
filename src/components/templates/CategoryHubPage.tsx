@@ -5,8 +5,7 @@ import { PageCta } from '../common/PageCta';
 import { SeoMetadata } from '../common/SeoMetadata';
 import { SERVICE_CATEGORIES, ALL_SERVICES } from '../../data/allServicesData';
 import { ALL_PROJECTS } from '../../data/allProjectsData';
-import { ArrowRight, CheckCircle2, ChevronRight, Cpu, Database, Globe, Smartphone, Cloud, Layers, Sliders, Sparkles } from 'lucide-react';
-import { getServiceShowcaseData } from '../../utils/serviceImageResolver';
+import { ArrowRight, CheckCircle2, ChevronRight, Cpu, Database, Globe, Smartphone, Cloud, Layers, Sliders } from 'lucide-react';
 
 interface CategoryHubPageProps {
   onOpenDemo?: () => void;
@@ -20,10 +19,21 @@ export const CategoryHubPage: React.FC<CategoryHubPageProps> = ({ onOpenDemo, on
   const categoryMeta = SERVICE_CATEGORIES.find(c => c.category === categoryKey) || SERVICE_CATEGORIES[0];
   const servicesInCategory = ALL_SERVICES.filter(s => s.category === categoryMeta.category);
   const relatedProject = ALL_PROJECTS.find(p => p.serviceCategory === categoryMeta.category) || ALL_PROJECTS[0];
-  const showcase = getServiceShowcaseData(categoryMeta.category);
+
+  const getCategoryIcon = (name: string) => {
+    switch (name) {
+      case 'Cpu': return <Cpu className="w-6 h-6 text-indigo-400" />;
+      case 'Database': return <Database className="w-6 h-6 text-sky-400" />;
+      case 'Globe': return <Globe className="w-6 h-6 text-blue-400" />;
+      case 'Smartphone': return <Smartphone className="w-6 h-6 text-emerald-400" />;
+      case 'Cloud': return <Cloud className="w-6 h-6 text-purple-400" />;
+      case 'Layers': return <Layers className="w-6 h-6 text-amber-400" />;
+      default: return <Sliders className="w-6 h-6 text-slate-400" />;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <SeoMetadata
         title={`${categoryMeta.name} Services & Solutions`}
         description={categoryMeta.description}
@@ -47,12 +57,12 @@ export const CategoryHubPage: React.FC<CategoryHubPageProps> = ({ onOpenDemo, on
           label: 'Specialized Enterprise Blueprints'
         }}
       >
-        <div className="flex flex-wrap items-center gap-2 pt-2">
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           {SERVICE_CATEGORIES.map((cat) => (
             <Link
               key={cat.category}
               href={`/services/${cat.category}`}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 cat.category === categoryMeta.category
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
@@ -64,78 +74,19 @@ export const CategoryHubPage: React.FC<CategoryHubPageProps> = ({ onOpenDemo, on
         </div>
       </PageHero>
 
-      {/* ==================== CATEGORY SHOWCASE IMAGE BANNER ==================== */}
-      <section className="relative -mt-10 lg:-mt-14 pb-16 lg:pb-24 max-w-7xl mx-auto px-6 w-full">
-        <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 via-sky-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
-
-        <div className="relative rounded-3xl overflow-hidden border border-slate-700/80 bg-slate-900/90 shadow-2xl group flex flex-col">
-          {/* Topbar: macOS Window Header */}
-          <div className="px-5 py-3.5 bg-slate-950/95 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-              </div>
-              <span className="text-xs font-semibold text-slate-300">
-                {showcase.badge} · {categoryMeta.name}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-medium text-emerald-400">{showcase.statusText}</span>
-            </div>
-          </div>
-
-          {/* High-Resolution Showcase Image */}
-          <div className="relative overflow-hidden bg-slate-950">
-            <img
-              src={showcase.image}
-              alt={`${categoryMeta.name} Enterprise Showcase Platform Interface`}
-              className="w-full h-auto object-cover object-top transition-transform duration-700 group-hover:scale-[1.01]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent pointer-events-none" />
-
-            <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-lg p-5 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-700/80 shadow-2xl">
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{showcase.caption}</span>
-              </div>
-              <div className="text-lg sm:text-xl font-bold text-white mt-1">
-                {categoryMeta.name} Command Center
-              </div>
-              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                {categoryMeta.description}
-              </p>
-            </div>
-          </div>
-
-          {/* Metrics bar */}
-          <div className="p-4 bg-slate-950/95 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {showcase.metrics.map((metric, mIdx) => (
-              <div key={mIdx} className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between">
-                <span className="text-xs text-slate-400">{metric.label}</span>
-                <span className="text-sm font-bold text-emerald-400">{metric.value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services Grid (All services under this category) */}
-      <section className="py-20 lg:py-28 bg-slate-950 border-b border-slate-800">
+      <section className="py-20 bg-slate-950 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <span className="text-xs font-semibold uppercase text-indigo-400 tracking-wider">
+              <span className="text-xs font-mono uppercase text-indigo-400 tracking-wider">
                 Explore {categoryMeta.name}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight">
-                {servicesInCategory.length} Specialized Capabilities
+              <h2 className="text-3xl font-extrabold text-white mt-1">
+                {servicesInCategory.length} Specialized Engineering Capabilities
               </h2>
             </div>
-            <p className="text-sm text-slate-400 max-w-md leading-relaxed">
+            <p className="text-xs text-slate-400 max-w-md">
               Every service includes documented API interfaces, automated compliance guardrails, and production SLAs.
             </p>
           </div>
@@ -149,8 +100,8 @@ export const CategoryHubPage: React.FC<CategoryHubPageProps> = ({ onOpenDemo, on
               >
                 <div>
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800/80 text-xs">
-                    <span className="text-slate-500 font-medium">0{idx + 1}.</span>
-                    <span className="text-emerald-400 text-[11px] font-semibold">{svc.heroStat.value}</span>
+                    <span className="font-mono text-slate-500">0{idx + 1}.</span>
+                    <span className="font-mono text-emerald-400 text-[11px] font-semibold">{svc.heroStat.value}</span>
                   </div>
 
                   <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">

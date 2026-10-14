@@ -4,7 +4,6 @@ import { PageCta } from '../components/common/PageCta';
 import { SeoMetadata } from '../components/common/SeoMetadata';
 import { Calculator, ArrowRight, ShieldCheck, CheckCircle2, Server, Globe, Cpu } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { saveLead } from '../utils/leadStorage';
 
 export const QuotePage: React.FC = () => {
   const [nodes, setNodes] = useState<number>(500);
@@ -27,17 +26,6 @@ export const QuotePage: React.FC = () => {
     e.preventDefault();
     if (!email || !company) return;
     setSubmitted(true);
-    
-    saveLead({
-      name: `${company} Lead Architect`,
-      company,
-      email,
-      nodes: `${nodes} Nodes (${regions} Regions)`,
-      timeline: 'Rate Lock 60 Days',
-      source: 'Architecture Quote Calculator',
-      notes: `Estimated: $${calculatedMonthly.toLocaleString()}/mo, Throughput: ${throughput}M ev/day, Tier: ${complianceTier}`
-    });
-
     try {
       confetti({ particleCount: 50, spread: 60 });
     } catch {

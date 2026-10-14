@@ -10,7 +10,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-24 lg:py-36 bg-slate-900/40 border-b border-slate-800 relative">
+    <section id="faq" className="py-20 lg:py-28 bg-slate-900/40 border-b border-slate-800 relative">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-14">
           <div className="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">
@@ -38,7 +38,7 @@ export const FaqSection: React.FC = () => {
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-start gap-4">
-                    <span className="text-xs font-semibold text-indigo-400 mt-0.5">
+                    <span className="text-xs font-mono text-indigo-400 mt-0.5">
                       0{idx + 1}
                     </span>
                     <span className="text-base font-semibold text-white text-balance">
@@ -53,7 +53,7 @@ export const FaqSection: React.FC = () => {
                 {isOpen && (
                   <div className="px-6 pb-6 pt-1 text-sm text-slate-300 leading-relaxed border-t border-slate-900">
                     <p>{item.answer}</p>
-                    <div className="mt-3 flex items-center gap-2 text-xs font-medium text-slate-400">
+                    <div className="mt-3 flex items-center gap-2 text-xs font-mono text-slate-400">
                       <span className="uppercase">{item.category}</span>
                       <span>·</span>
                       <span className="text-emerald-400">Audited Spec</span>
