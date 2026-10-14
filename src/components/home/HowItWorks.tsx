@@ -6,7 +6,7 @@ export const HowItWorks: React.FC = () => {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
 
   return (
-    <section className="py-20 lg:py-28 bg-slate-900/40 border-b border-slate-800 relative">
+    <section className="py-24 lg:py-36 bg-slate-900/40 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">

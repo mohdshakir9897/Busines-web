@@ -11,7 +11,7 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onOpenDemo
   const activeIndustry = INDUSTRIES_LIST[activeTab];
 
   return (
-    <section id="industries" className="py-20 lg:py-28 bg-slate-950 border-b border-slate-800 relative">
+    <section id="industries" className="py-24 lg:py-36 bg-slate-950 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">

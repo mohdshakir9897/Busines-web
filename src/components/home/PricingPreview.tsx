@@ -11,18 +11,18 @@ export const PricingPreview: React.FC<PricingPreviewProps> = ({ onOpenDemo }) =>
   const [annualBilling, setAnnualBilling] = useState(true);
 
   return (
-    <section id="pricing" className="py-20 lg:py-28 bg-slate-950 border-b border-slate-800 relative">
+    <section id="pricing" className="py-24 lg:py-36 bg-slate-950 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">
-            Transparent Enterprise Architecture Licensing
+            Transparent Enterprise SaaS Licensing
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight text-balance">
-            Predictable Node-Based Pricing Without Overage Penalties
+            Predictable Platform Pricing Without Overage Penalties
           </h2>
           <p className="text-base text-slate-300 mt-4 leading-relaxed">
-            All plans include our zero-latency eBPF telemetry mesh, automated multi-cloud failover, and hardware-backed cryptographic security.
+            All plans include automated multi-cloud failover, 99.999% SLA uptime guarantee, and continuous SOC 2 compliance governance.
           </p>
 
           {/* Interactive Billing Toggle */}

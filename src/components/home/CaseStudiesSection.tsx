@@ -19,7 +19,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenDe
   };
 
   return (
-    <section id="case-studies" className="py-20 lg:py-28 bg-slate-900/50 border-b border-slate-800 relative">
+    <section id="case-studies" className="py-24 lg:py-36 bg-slate-900/50 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
